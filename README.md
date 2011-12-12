@@ -1,7 +1,7 @@
-### Hari's CMS ###
+# Hari's CMS #
 
 ## Authors
-> Matthew Harrison-Jones (@matt_hojo)
+> Matthew Harrison-Jones ([@matt_hojo](http://twitter.com/matt_hojo))
 
 ## Description
 This is just a small CMS powered by a single folder. No database is required.
