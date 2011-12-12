@@ -46,6 +46,12 @@ class Images{
 	*/
 	protected $file_names;
 	
+	/**
+	* $error
+	* @var boolean $error Defines if there are errors in code.
+	*/
+	protected $error = false;
+	
     /**
     * __construct
     *
@@ -64,51 +70,54 @@ class Images{
     */
     public function parseContent() {
     	$this->getImages();
-    	$i = 0;
-    	foreach($this->file_dates as $this->file_dates){
-    		$date = $this->file_dates;
-    		$j = $this->file_names_Array[$i];
-    	    $file = $this->file_names[$j];
-    	    $i++;
-    	    
-    	    $ext = strrchr($file,".");       
-    	    $filename = $this->dir.$file;
-    	    $date = date ("d / n / y", filemtime($filename));
-    	    $name = basename($filename, $ext);
-    	    $caption = str_replace("_", " ", $name); 
-    	    $this->display .='<div class="photo" id="'.$name.'">';
-    	    $this->display .='<span class="date">'.$date.'</span>
-    	    ';
-    	    
-    	    $extention = $this->get_file_extension($filename);
-    	    switch ($extention)
-    	    {
-    	    case 'mp4':
-    	      $this->display .= '<video class="sublime" width="500px" height="400px" poster="video-poster.jpg" preload="none">
-    	        <source src="'.$filename.'" />
-    	      </video>';
-    	      break;
-    	    case 'txt':
-    	      $txt = file_get_contents($filename, true);
-    	      $html = $this->convertMarkdown($txt);
-    	      $this->display .= '<div class="note">'.$html.'</div>';
-    	      break;
-    	    default:
-    	      $this->display .='
-    	      
-    	      <img class="lazy" src="img/grey.gif" data-original="'.$filename.'" alt="'.$caption.'"/>
-    	      <noscript>
-    	      	<img src="'.$filename.'" alt="'.$caption.'"/>
-    	      </noscript>
-    	      ';
-    	    }
-    	    $this->display .='
-    	    	<span class="caption">'.$caption.'</span>
-    	    	<div class="social"><div class="fb-like" data-href="'.URL.'#'.$name.'" data-send="false" data-layout="button_count" data-width="40px" data-show-faces="false" data-font="arial"></div></div>
-    	    	
-    	    </div>';
-    	    
-    	}
+    	if($this->error == false){
+    		$i = 0;
+	    	foreach($this->file_dates as $this->file_dates){
+	    		$date = $this->file_dates;
+	    		$j = $this->file_names_Array[$i];
+	    	    $file = $this->file_names[$j];
+	    	    $i++;
+	    	    
+	    	    $ext = strrchr($file,".");       
+	    	    $filename = $this->dir.$file;
+	    	    $date = date ("d / n / y", filemtime($filename));
+	    	    $name = basename($filename, $ext);
+	    	    $caption = str_replace("_", " ", $name); 
+	    	    $this->display .='<div class="photo" id="'.$name.'">';
+	    	    $this->display .='<span class="date">'.$date.'</span>
+	    	    ';
+	    	    
+	    	    $extention = $this->get_file_extension($filename);
+	    	    switch ($extention)
+	    	    {
+	    	    case 'mp4':
+	    	      $this->display .= '<video class="sublime" width="500px" height="400px" poster="video-poster.jpg" preload="none">
+	    	        <source src="'.$filename.'" />
+	    	      </video>';
+	    	      break;
+	    	    case 'txt':
+	    	      $txt = file_get_contents($filename, true);
+	    	      $html = $this->convertMarkdown($txt);
+	    	      $this->display .= '<div class="note">'.$html.'</div>';
+	    	      break;
+	    	    default:
+	    	      $this->display .='
+	    	      
+	    	      <img class="lazy" src="img/grey.gif" data-original="'.$filename.'" alt="'.$caption.'"/>
+	    	      <noscript>
+	    	      	<img src="'.$filename.'" alt="'.$caption.'"/>
+	    	      </noscript>
+	    	      ';
+	    	    }
+	    	    
+	    	    $this->display .='
+	    	    	<span class="caption">'.$caption.'</span>
+	    	    	<div class="social"><div class="fb-like" data-href="'.URL.'#'.$name.'" data-send="false" data-layout="button_count" data-width="40px" data-show-faces="false" data-font="arial"></div></div>
+	    	    	
+	    	    </div>';
+	    	    
+	    	} // End foreach
+	    } // End if
     	
     	return $this->display;
     }
@@ -133,26 +142,35 @@ class Images{
 					
 				}
 				closedir($handle);
-				
-				switch (SORT) {
-					case 'desc':
-						arsort($this->file_dates);
-						break;
-					case 'asc':
-						asort($this->file_dates);
-						break;
-					default:
-						arsort($this->file_dates);
+				if(!empty($this->file_names)){
+					switch (SORT) {
+						case 'desc':
+							arsort($this->file_dates);
+							break;
+						case 'asc':
+							asort($this->file_dates);
+							break;
+						default:
+							arsort($this->file_dates);
+					}
+					
+					//Match file_names array to file_dates array
+				    $this->file_names_Array = array_keys($this->file_dates);
+				    foreach ($this->file_names_Array as $idx => $name) $name=$this->file_names[$name];
+				    $this->file_dates = array_merge($this->file_dates);
+				}else{
+					$this->display .= "<div class='note error'><h2>Directory does not contain any posts.</h2></div>";
+					$this->error = true;
 				}
-				
-				//Match file_names array to file_dates array
-			    $this->file_names_Array = array_keys($this->file_dates);
-			    foreach ($this->file_names_Array as $idx => $name) $name=$this->file_names[$name];
-			    $this->file_dates = array_merge($this->file_dates);
 		}
-		elseif(DEBUG)
+		else
 		{
-				$this->display .= "Directory does not exist!";
+				$this->display .= "
+				<div class='note error'>
+				<h2>Directory does not exist!</h2>
+				<p>Please check your config file.</p>
+				</div>";
+				$this->error = true;
 		}
 	}
 	
