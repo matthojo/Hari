@@ -27,7 +27,7 @@ An example can be found at [Hari's Timeline](http://hari.matthojo.co.uk/).
 * Edit the config.php file so the author and other settings are correct to you.
 * Drag some images / .txt files into the 'display' folder or the folder you have set in the config.php folder.
 * The post title is based on the filename, so, "this_is_an_image.jpg" turns into "This Is An Image".
-Thats it.
+* Thats it.
 
 ## License
 
