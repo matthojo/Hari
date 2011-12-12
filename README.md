@@ -7,7 +7,7 @@
 ## Description
 
 This is just a small CMS powered by a single folder. No database is required. 
-All you do is drag and drop images into the directory you choose and that's it. Text posts can be made with Markdown support included.
+All you do is drag and drop images / text files into the directory you choose, and that's it. Text posts can include Markdown too.
 An example can be found at [Hari's Timeline](http://hari.matthojo.co.uk/).
 
 ## License
