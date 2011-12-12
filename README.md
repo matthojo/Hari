@@ -29,6 +29,9 @@ An example can be found at [Hari's Timeline](http://hari.matthojo.co.uk/).
 * The post title is based on the filename, so, "this_is_an_image.jpg" turns into "This Is An Image".
 * Thats it.
 
+###Note
+Files are ordered by modification date so, if you change a file once its in the timeline, it will appear at the top.
+
 ## License
 
 ### Actual Programme
