@@ -2,7 +2,7 @@
 
 ## Authors
 
-> Matthew Harrison-Jones ([@matt_hojo](http://twitter.com/matt_hojo))
+* Matthew Harrison-Jones ([@matt_hojo](http://twitter.com/matt_hojo))
 
 ## Description
 
@@ -12,12 +12,12 @@ This is just a small CMS powered by a single folder. No database is required. An
 
 ### Actual Code
 
-> [GPL-2.0](http://www.opensource.org/licenses/gpl-2.0.php)
+* [GPL-2.0](http://www.opensource.org/licenses/gpl-2.0.php)
 
 ### Components:
 
-> jQuery: MIT/GPL license
-> Modernizr: MIT/BSD license
+* jQuery: MIT/GPL license
+* Modernizr: MIT/BSD license
 
 ## Credits
->[HTML5 Boilerplate](http://html5boilerplate.com/)
+*[HTML5 Boilerplate](http://html5boilerplate.com/)
