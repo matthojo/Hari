@@ -54,7 +54,7 @@ require_once('config.php');
   	<div class="clearfix"></div>
   
   <footer>
-	&copy; <?php echo date(Y)." ".AUTHOR; ?> Powered by <a href="http://hari.matthojo.co.uk/cms" title="Hari's CMS">Hari's CMS</a>.
+	&copy; <?php echo date(Y)." ".AUTHOR; ?>. Powered by <a href="https://github.com/matthojo/Hari-s-CMS" title="Hari's CMS">Hari's CMS</a>.
   </footer>
 
 
