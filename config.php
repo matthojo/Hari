@@ -40,6 +40,19 @@ define('TITLE', "My Timeline");
 define('AUTHOR', "CONTENT AUTHOR GOES HERE");
 
 /**
+* URL
+*
+* The url of the website. Should be set automatically.
+*
+* @author Matthew Harrison-Jones <contact@matthojo.co.uk>
+* @global string URL Set this to the root of your web directory.
+*/
+$url = (!empty($_SERVER['HTTPS'])) ? "https://".$_SERVER['SERVER_NAME'].$_SERVER['REQUEST_URI'] : "http://".$_SERVER['SERVER_NAME'].$_SERVER['REQUEST_URI'];
+define('URL', $url);
+
+
+
+/**
 * DIR
 *
 * @author Matthew Harrison-Jones <contact@matthojo.co.uk>

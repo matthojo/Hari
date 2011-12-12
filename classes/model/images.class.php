@@ -104,7 +104,7 @@ class Images{
     	    }
     	    $this->display .='
     	    	<span class="caption">'.$caption.'</span>
-    	    	<div class="social"><div class="fb-like" data-href="http://hari.matthojo.co.uk/#'.$name.'" data-send="false" data-layout="button_count" data-width="40px" data-show-faces="false" data-font="arial"></div></div>
+    	    	<div class="social"><div class="fb-like" data-href="'.URL.'#'.$name.'" data-send="false" data-layout="button_count" data-width="40px" data-show-faces="false" data-font="arial"></div></div>
     	    	
     	    </div>';
     	    
@@ -122,7 +122,7 @@ class Images{
 		
 		if ($handle = opendir($this->dir)) {
 			while (false!== ($file = readdir($handle))) {
-				$ext = strrchr($file,".");
+				$ext = strtolower(strrchr($file,"."));
 				//echo $ext."<br>";
 					if(in_array($ext,$this->good_ext))
 					{
