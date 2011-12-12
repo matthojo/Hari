@@ -223,6 +223,15 @@ body{
 	height: 100%;
 	width: 100%;
 }
+a, a:visited{
+	color: #309aef;
+	text-decoration: none;
+}
+a:hover{
+	color: #3a79e7;
+	text-decoration: none;
+}
+
 #main{
 	width: 590px;
 	margin: 0 auto;
@@ -379,7 +388,7 @@ h1{
 footer{
 	width: 100%;
 	color: #FFF;
-	font-size: 10px;
+	font-size: 12px;
 	text-align: center;
 }
 
