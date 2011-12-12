@@ -49,7 +49,6 @@ require_once('config.php');
   			
   			$display->displayContent();
   		?>
-	<div class="clearfix"></div>
   </div>
   	<div class="clearfix"></div>
   
