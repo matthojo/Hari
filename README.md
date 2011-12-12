@@ -14,7 +14,7 @@ An example can be found at [Hari's Timeline](http://hari.matthojo.co.uk/).
 
 ### Actual Programme
 
-* Everything but the components below: [GPL-2.0](http://www.opensource.org/licenses/gpl-2.0.php)
+* Everything but the components below: [GPL 2.0](http://www.opensource.org/licenses/gpl-2.0.php)
 
 ### Components:
 
