@@ -20,4 +20,5 @@ This is just a small CMS powered by a single folder. No database is required. An
 * Modernizr: MIT/BSD license
 
 ## Credits
-*[HTML5 Boilerplate](http://html5boilerplate.com/)
+
+* [HTML5 Boilerplate](http://html5boilerplate.com/)
