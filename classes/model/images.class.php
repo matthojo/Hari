@@ -101,17 +101,19 @@ class Images{
 	    	      $this->display .= '<div class="note">'.$html.'</div>';
 	    	      break;
 	    	    default:
+	    	      list($width, $height, $type, $attr) = getimagesize($filename);
 	    	      $this->display .='
-	    	      
-	    	      <img class="lazy" src="img/grey.gif" data-original="'.$filename.'" alt="'.$caption.'"/>
-	    	      <noscript>
-	    	      	<img src="'.$filename.'" alt="'.$caption.'"/>
-	    	      </noscript>
+	    	      <div class="image">
+	    	      	<img class="lazy" src="img/grey.gif" width="'.$width.'px" height="'.$height.'px" data-original="'.$filename.'" alt="'.$caption.'"/>
+	    	      	<noscript>
+	    	      		<img src="'.$filename.'" width="'.$width.'px" height="'.$height.'px" alt="'.$caption.'"/>
+	    	      	</noscript>
+	    	      </div>
 	    	      ';
 	    	    }
 	    	    
 	    	    $this->display .='
-	    	    	<span class="caption">'.$caption.'</span>
+	    	    	<span class="caption">'.$caption.'<span class="arrow"></span></span>
 	    	    	<div class="social"><div class="fb-like" data-href="'.URL.'#'.$name.'" data-send="false" data-layout="button_count" data-width="40px" data-show-faces="false" data-font="arial"></div></div>
 	    	    	
 	    	    </div>';
