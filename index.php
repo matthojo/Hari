@@ -39,10 +39,14 @@ require_once('config.php');
 
 <body>
   <header>
+  <h3>Tips:</h3>
+  <ul>
+  	<li>Hover over the post to see the date it was posted.</li>
+  </ul>
   </header>  
   <div id="main">
     <div id="rule"></div>
-  	<h1><?php echo TITLE; ?></h1>
+  	<h1 class="title"><?php echo TITLE; ?></h1>
   		<?php
   			require_once('classes/view/display.class.php');
   			$display = new Display();
