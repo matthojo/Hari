@@ -84,7 +84,12 @@ class Images{
 	    	    $name = basename($filename, $ext);
 	    	    $caption = str_replace("_", " ", $name); 
 	    	    $this->display .='<div class="photo" id="'.$name.'">';
-	    	    $this->display .='<span class="date">'.$date.'</span>
+	    	    $this->display .='
+	    	    <span class="date">
+	    	    	'.$date.' 
+	    	    	<span class="marker"></span>
+	    	    </span>
+	    	    <div class="content">
 	    	    ';
 	    	    
 	    	    $extention = $this->get_file_extension($filename);
@@ -115,6 +120,7 @@ class Images{
 	    	    $this->display .='
 	    	    	<span class="caption">'.$caption.'<span class="arrow"></span></span>
 	    	    	<div class="social"><div class="fb-like" data-href="'.URL.'#'.$name.'" data-send="false" data-layout="button_count" data-width="40px" data-show-faces="false" data-font="arial"></div></div>
+	    	    	</div>
 	    	    	
 	    	    </div>';
 	    	    
