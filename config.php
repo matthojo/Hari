@@ -40,6 +40,17 @@ define('TITLE', "My Timeline");
 define('AUTHOR', "CONTENT AUTHOR GOES HERE");
 
 /**
+ * THEME
+ *
+ * The theme you wish your content will look like.
+ * NOTE: The theme name is case sensitive.
+ *
+ * @author Matthew Harrison-Jones <contact@matthojo.co.uk>
+ * @global string THEME Sets the theme of the website
+ */
+define('THEME', 'default');
+
+/**
 * URL
 *
 * The url of the website. Should be set automatically.

@@ -13,6 +13,7 @@
 	* Plain Text
 	* Markdown
 	* Video [Coming Soon]
+* Themes
 	
 
 ## Description
@@ -30,7 +31,7 @@ An example can be found at [Hari's Timeline](http://hari.matthojo.co.uk/).
 * Thats it.
 
 ###Note
-Files are ordered by modification date so, if you change a file once its in the timeline, it will appear at the top.
+Files are ordered by modification date so if you change a file once its in the timeline, it will appear at the top.
 
 ## License
 

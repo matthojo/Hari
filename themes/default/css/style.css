@@ -515,23 +515,23 @@ display: none;
 	display: inline-block;
 	width: 460px;
 	padding: 10px 10px 10px 20px;
-	background: 
+	background:
 		-webkit-gradient(
 			linear,
 			left top, left bottom,
 			from(#81cbbc),
 			color-stop(2%, #FFFFFF)
 		);
-		
-	background: 
+
+	background:
 		-moz-repeating-linear-gradient(
 			top,
 			#FFFFFF,
 			#FFFFFF 28px,
 			#81cbbc 40px
 		);
-		
-	background: 
+
+	background:
 		repeating-linear-gradient(
 			top,
 			#FFFFFF,

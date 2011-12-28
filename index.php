@@ -32,7 +32,7 @@ require_once('config.php');
 
   <meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0;">
 
-  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="themes/<?php echo THEME ?>/css/style.css">
  
   <script src="js/libs/modernizr-2.0.6.min.js"></script>
 </head>
