@@ -80,7 +80,7 @@ class Images{
 	    	    
 	    	    $ext = strrchr($file,".");       
 	    	    $filename = $this->dir.$file;
-	    	    $date = date ("d / n / y", filemtime($filename));
+	    	    $date = date ("d / n / y", $date);
 	    	    $name = basename($filename, $ext);
 	    	    $caption = str_replace("_", " ", $name); 
 	    	    $this->display .='<div class="photo" id="'.$name.'">';
