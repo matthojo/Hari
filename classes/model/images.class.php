@@ -77,8 +77,7 @@ class Images{
 	    		$j = $this->file_names_Array[$i];
 	    	    $file = $this->file_names[$j];
 	    	    $i++;
-	    	    
-	    	    $ext = strrchr($file,".");       
+	    	    $ext = strrchr($file,".");
 	    	    $filename = $this->dir.$file;
 	    	    $date = date ("d / n / y", $date);
 	    	    $name = basename($filename, $ext);
@@ -123,7 +122,7 @@ class Images{
 	    	    	</div>
 	    	    	
 	    	    </div>';
-	    	    
+
 	    	} // End foreach
 	    } // End if
     	
@@ -161,7 +160,7 @@ class Images{
 						default:
 							arsort($this->file_dates);
 					}
-					
+
 					//Match file_names array to file_dates array
 				    $this->file_names_Array = array_keys($this->file_dates);
 				    foreach ($this->file_names_Array as $idx => $name) $name=$this->file_names[$name];
