@@ -68,12 +68,12 @@ require_once('config.php');
   <script>window.jQuery || document.write('<script src="js/libs/jquery-1.7.1.min.js"><\/script>')</script>
 
   <div id="fb-root"></div>
-  <!-- Change 'XXXXXXXXXX' to your Facebook app ID (https://developers.facebook.com/)-->
+  <!-- Change your Facebook app ID in config.php-->
   <script>(function(d, s, id) {
     var js, fjs = d.getElementsByTagName(s)[0];
     if (d.getElementById(id)) return;
     js = d.createElement(s); js.id = id;
-    js.src = "//connect.facebook.net/en_GB/all.js#xfbml=1&appId=XXXXXXXXXX";
+    js.src = "//connect.facebook.net/en_GB/all.js#xfbml=1&appId=<?php echo FBID; ?>";
     fjs.parentNode.insertBefore(js, fjs);
   }(document, 'script', 'facebook-jssdk'));</script>
 
@@ -88,10 +88,10 @@ require_once('config.php');
   <!-- end scripts -->
 
 
-  <!-- Asynchronous Google Analytics snippet. Change UA-XXXXX-X to be your site's ID.
+  <!-- Asynchronous Google Analytics snippet. Change the UA-XXXXX-X to be your site's ID in the config.php.
        mathiasbynens.be/notes/async-analytics-snippet -->
   <script>
-    var _gaq=[['_setAccount','UA-XXXXXXX-XX'],['_trackPageview']];
+    var _gaq=[['_setAccount','UA-<?php echo GAID; ?>'],['_trackPageview']];
     (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
     g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
     s.parentNode.insertBefore(g,s)}(document,'script'));

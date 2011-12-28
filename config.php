@@ -51,6 +51,28 @@ define('AUTHOR', "CONTENT AUTHOR GOES HERE");
 define('THEME', 'default');
 
 /**
+ * FBID
+ *
+ * Your Facebook AppID
+ * Change 'XXXXXXXXXX' to your Facebook app ID (https://developers.facebook.com/)
+ *
+ * @author Matthew Harrison-Jones <contact@matthojo.co.uk>
+ * @global string FBID Sets the Facebook AppID
+ */
+define('FBID', 'XXXXXXXXXX');
+
+/**
+ * GAID
+ *
+ * Your Google Analytics Site ID.
+ * NOTE: Do NOT include the beginning 'UA-'.
+ *
+ * @author Matthew Harrison-Jones <contact@matthojo.co.uk>
+ * @global string GAID Sets the Google Analytics site ID
+ */
+define('GAID', 'XXXXX-X');
+
+/**
 * URL
 *
 * The url of the website. Should be set automatically.
