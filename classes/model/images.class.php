@@ -146,7 +146,6 @@ class Images {
 	    	    	</div>
 	    	    	</div>';
                 } else{
-
                     $this->addMarkup($name, $date, $filename, $caption, "photo");
                 }
 
@@ -166,11 +165,15 @@ class Images {
      * @param string $caption Processed file name
      *
      */
-    public function addMarkup($name, $date, $filename, $caption, $type){
+    public function addMarkup($name, $date, $filename, $caption, $ptype){
+        if($ptype != "photo"){
+            $this->display .= '<div class="'.$ptype.'" id="'.$name.'">';
+        }else{
+            $this->display .= '<div class="'.$ptype.'" data-controls-modal="my-modal" data-backdrop="static" id="'.$name.'">';
 
-        $this->display .= '<div class="'.$type.'"';if($type != "photo"){$this->display .= 'data-controls-modal="my-modal" data-backdrop="static"';}$this->display.='id="'.$name.'">';
+        }
 
-        if($type == "photo"){
+        if($ptype == "photo"){
 
             $this->display .= '
 	    	    <span class="date">
@@ -213,13 +216,12 @@ class Images {
 	    	      ';
         }
         $this->display .= '<span class="caption">'.$caption.'<span class="arrow"></span></span>';
-        if($type == "photo"){
+        if($ptype == "photo"){
             $this->display .= '
 	    	    	</div>
 	    	    	';
         }
         $this->display .= '</div>';
-
     }
 
     /**
