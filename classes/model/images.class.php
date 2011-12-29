@@ -59,7 +59,9 @@ class Images {
      * @param string $d This will force a specific directory rather than specified directory in config.php.
      */
     public function __construct($d = DIR){
+
         $this->dir = $d;
+
     }
 
     /**
@@ -69,7 +71,7 @@ class Images {
      * @return string
      */
     public function parseContent(){
-        $this->getImages();
+        $this->getContent();
         if($this->error == false){
             $i = 0;
             foreach($this->file_dates as $this->file_dates){
@@ -88,6 +90,13 @@ class Images {
 	    	    	'.$date.'
 	    	    	<span class="marker"></span>
 	    	    </span>
+	    	    <div class="social">
+	    	    	        <div class="social-item"><div class="g-plusone" data-size="tall" data-href="'.URL.'#'.$name.'"></div></div>
+	    	    	        <div class="social-item"><a href="https://twitter.com/share" class="twitter-share-button" data-url="'.URL.'#'.$name.'" data-count="vertical">Tweet</a>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script></div>
+                            <div class="social-item"><div class="fb-like" data-href="'.URL.'#'.$name.'" data-send="false" data-layout="box_count" data-width="55px" data-show-faces="false" data-font="arial"></div></div>
+
+	    	    </div>
 	    	    <div class="content">
 	    	    ';
 
@@ -118,7 +127,6 @@ class Images {
 
                 $this->display .= '
 	    	    	<span class="caption">'.$caption.'<span class="arrow"></span></span>
-	    	    	<div class="social"><div class="fb-like" data-href="'.URL.'#'.$name.'" data-send="false" data-layout="button_count" data-width="40px" data-show-faces="false" data-font="arial"></div></div>
 	    	    	</div>
 	    	    	
 	    	    </div>';
@@ -134,7 +142,7 @@ class Images {
      *
      * @author Matthew Harrison-Jones <contact@matthojo.co.uk>
      */
-    public function getImages(){
+    public function getContent(){
 
         if($handle = opendir($this->dir)){
             while(false !== ($file = readdir($handle))){

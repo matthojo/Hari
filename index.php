@@ -69,6 +69,12 @@ require_once('config.php');
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
 <script>window.jQuery || document.write('<script src="js/libs/jquery-1.7.1.min.js"><\/script>')</script>
 
+<!-- Google Plus button -->
+<script type="text/javascript" src="https://apis.google.com/js/plusone.js">
+    {lang: 'en-GB', parsetags: 'explicit'}
+</script>
+<script type="text/javascript">gapi.plusone.go();</script>
+
 <div id="fb-root"></div>
 <!-- Change your Facebook app ID in config.php-->
 <script>(function (d, s, id) {

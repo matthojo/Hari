@@ -327,10 +327,10 @@ h1.title{
 	-moz-border-radius: 10px;
 	border-radius: 10px;
 	padding: 10px 0;
-	margin-bottom: 40px;
+	margin-bottom: 20px;
 	margin-left: 10px;
 	display: inline-block;
-
+    position: relative;
 }
 .date{
 	font-size: 11px;
@@ -343,6 +343,7 @@ h1.title{
 	position: relative;
 	margin-left: 25px;
 	padding: 8px 2px 8px 4px;
+    display: block;
 }
 .date::after{
 	position: absolute;
@@ -451,8 +452,23 @@ h1.title{
 	z-index: 9999;
 }
 .social{
-	text-align: center;
+	float: left;
+    width: 55px;
+    opacity: 1;
+    display: block;
+    position: absolute;
+    top: 100px;
+    left: 20px;
+    cursor: pointer;
+    padding-left: 10px;
+
 }
+.social .social-item{
+    display:block;
+    width: 55px;
+    margin-bottom: 10px
+}
+
 .content{
 	display: inline-block;
 	position: relative;
