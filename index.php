@@ -54,16 +54,16 @@ require_once('config.php');
 
     $display->displayContent();
     ?>
-    <div id="my-modal" class="modal hide fade">
-        <div class="modal-header">
-            <a href="#" class="close">&times;</a>
-            <h3></h3>
-        </div>
-        <div class="modal-body">
-            <p>One fine body…</p>
-        </div>
-        <div class="modal-footer"></div>
+</div>
+<div id="my-modal" class="modal hide fade">
+    <div class="modal-header">
+        <a href="#" class="close">&times;</a>
+        <h3></h3>
     </div>
+    <div class="modal-body">
+        <p>One fine body…</p>
+    </div>
+    <div class="modal-footer"></div>
 </div>
 <div class="clearfix"></div>
 

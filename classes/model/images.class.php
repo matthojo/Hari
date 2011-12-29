@@ -166,7 +166,7 @@ class Images {
      *
      */
     public function addMarkup($name, $date, $filename, $caption, $ptype){
-        if($ptype != "photo"){
+        if($ptype == "photo"){
             $this->display .= '<div class="'.$ptype.'" id="'.$name.'">';
         }else{
             $this->display .= '<div class="'.$ptype.'" data-controls-modal="my-modal" data-backdrop="static" id="'.$name.'">';
