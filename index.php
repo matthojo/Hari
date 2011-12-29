@@ -54,6 +54,16 @@ require_once('config.php');
 
     $display->displayContent();
     ?>
+    <div id="my-modal" class="modal hide fade">
+        <div class="modal-header">
+            <a href="#" class="close">&times;</a>
+            <h3></h3>
+        </div>
+        <div class="modal-body">
+            <p>One fine body…</p>
+        </div>
+        <div class="modal-footer"></div>
+    </div>
 </div>
 <div class="clearfix"></div>
 
@@ -92,6 +102,18 @@ require_once('config.php');
         $("img.lazy").show().lazyload({
             effect:"fadeIn"
         });
+    });
+</script>
+<script src="js/libs/bootstrap-modal.js" type="text/javascript"></script>
+<script>
+    $('#my-modal').modal({
+        keyboard: true
+    });
+    $('.groupContent').click(function () {
+        var NAME = $(this).children(':last').text();
+        var CONTENT = $(this).children(':first').html();
+        $('#my-modal h3').text(NAME);
+        $('#my-modal .modal-body').html(CONTENT);
     });
 </script>
 <!-- end scripts -->

@@ -47,6 +47,24 @@ class Images {
     protected $file_names;
 
     /**
+     * $group_dates
+     * @var array $group_dates Stores list of file dates
+     */
+    protected $group_dates;
+
+    /**
+     * $group_names_Array
+     * @var array $group_names_Array This is uses to merge file dates and file names back together
+     */
+    protected $group_names_Array;
+
+    /**
+     * $group_names
+     * @var array $group_names Stores list of file names
+     */
+    protected $group_names;
+
+    /**
      * $error
      * @var boolean $error Defines if there are errors in code.
      */
@@ -68,7 +86,7 @@ class Images {
      * Takes current files in the chosen directory and turns them into an output
      *
      * @author Matthew Harrison-Jones <contact@matthojo.co.uk>
-     * @return string
+     * @return mixed|string
      */
     public function parseContent(){
         $this->getContent();
@@ -84,8 +102,77 @@ class Images {
                 $date = date("d / n / y", $date);
                 $name = basename($filename, $ext);
                 $caption = str_replace("_", " ", $name);
-                $this->display .= '<div class="photo" id="'.$name.'">';
-                $this->display .= '
+
+
+                if(is_dir($this->dir.'/'.$file)){
+                    $this->display .= '<div class="group" id="'.$name.'">';
+                    $this->display .= '
+	    	    <span class="date">
+	    	    	'.$date.'
+	    	    	<span class="marker"></span>
+	    	    </span>
+	    	    <div class="social">
+	    	    	        <!-- <div class="social-item"><div class="g-plusone" data-size="tall" data-href="'.URL.'#'.$name.'"></div></div>
+	    	    	        <div class="social-item"><a href="https://twitter.com/share" class="twitter-share-button" data-url="'.URL.'#'.$name.'" data-count="vertical">Tweet</a>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script></div> -->
+                            <div class="social-item"><div class="fb-like" data-href="'.URL.'#'.$name.'" data-send="false" data-layout="box_count" data-width="55px" data-show-faces="false" data-font="arial"></div></div>
+
+	    	    </div>
+	    	    <div class="content">
+	    	        <div class="listItems">
+	    	    ';
+                    $this->getGroupsContent($this->dir.'/'.$file);
+                    $g = 0;
+                    foreach($this->group_dates as $this->group_dates){
+
+                        $group_date = $this->group_dates;
+                        $gj = $this->group_names_Array[$g];
+                        $groupFile = $this->group_names[$gj];
+                        $g++;
+
+                        $ext = strrchr($groupFile, ".");
+                        $group_filename = $this->dir.$file.'/'.$groupFile;
+                        $group_date = date("d / n / y", $group_date);
+                        $group_name = basename($group_filename, $ext);
+                        $group_caption = str_replace("_", " ", $group_name);
+
+                        $this->addMarkup($group_name, $group_date, $group_filename, $group_caption, "groupContent");
+
+                    }
+                    unset($this->group_dates, $this->group_names_Array, $this->group_names);
+                    $this->display .= '
+                        </div>
+	    	    	    <span class="caption">'.$caption.'<span class="arrow"></span></span>
+	    	    	</div>
+	    	    	</div>';
+                } else{
+
+                    $this->addMarkup($name, $date, $filename, $caption, "photo");
+                }
+
+            } // End foreach
+        } // End if
+        return $this->display;
+    }
+
+    /**
+     *
+     * Creates HTML content
+     *
+     * @author Matthew Harrison-Jones <contact@matthojo.co.uk>
+     * @param string $name Name of the file
+     * @param string $date Date of the file
+     * @param string $filename Path of the file
+     * @param string $caption Processed file name
+     *
+     */
+    public function addMarkup($name, $date, $filename, $caption, $type){
+
+        $this->display .= '<div class="'.$type.'"';if($type != "photo"){$this->display .= 'data-controls-modal="my-modal" data-backdrop="static"';}$this->display.='id="'.$name.'">';
+
+        if($type == "photo"){
+
+            $this->display .= '
 	    	    <span class="date">
 	    	    	'.$date.'
 	    	    	<span class="marker"></span>
@@ -99,23 +186,24 @@ class Images {
 	    	    </div>
 	    	    <div class="content">
 	    	    ';
+        }
+        $extention = $this->get_file_extension($filename);
 
-                $extention = $this->get_file_extension($filename);
-                switch($extention)
-                {
-                    case 'mp4':
-                        $this->display .= '<video class="sublime" width="500px" height="400px" poster="video-poster.jpg" preload="none">
+        switch($extention)
+        {
+            case 'mp4':
+                $this->display .= '<video class="sublime" width="500px" height="400px" poster="video-poster.jpg" preload="none">
 	    	        <source src="'.$filename.'" />
 	    	      </video>';
-                        break;
-                    case 'txt':
-                        $txt = file_get_contents($filename, true);
-                        $html = $this->convertMarkdown($txt);
-                        $this->display .= '<div class="note">'.$html.'</div>';
-                        break;
-                    default:
-                        list($width, $height, $type, $attr) = getimagesize($filename);
-                        $this->display .= '
+                break;
+            case 'txt':
+                $txt = file_get_contents($filename, true);
+                $html = $this->convertMarkdown($txt);
+                $this->display .= '<div class="note">'.$html.'</div>';
+                break;
+            default:
+                list($width, $height, $type, $attr) = getimagesize($filename);
+                $this->display .= '
 	    	      <div class="image">
 	    	      	<img class="lazy" src="img/grey.gif" width="'.$width.'px" height="'.$height.'px" data-original="'.$filename.'" alt="'.$caption.'"/>
 	    	      	<noscript>
@@ -123,18 +211,15 @@ class Images {
 	    	      	</noscript>
 	    	      </div>
 	    	      ';
-                }
-
-                $this->display .= '
-	    	    	<span class="caption">'.$caption.'<span class="arrow"></span></span>
+        }
+        $this->display .= '<span class="caption">'.$caption.'<span class="arrow"></span></span>';
+        if($type == "photo"){
+            $this->display .= '
 	    	    	</div>
-	    	    	
-	    	    </div>';
+	    	    	';
+        }
+        $this->display .= '</div>';
 
-            } // End foreach
-        } // End if
-
-        return $this->display;
     }
 
     /**
@@ -148,7 +233,8 @@ class Images {
             while(false !== ($file = readdir($handle))){
                 $ext = strtolower(strrchr($file, "."));
                 //echo $ext."<br>";
-                if(in_array($ext, $this->good_ext)){
+
+                if(in_array($ext, $this->good_ext) || is_dir($this->dir.'/'.$file) && $file != "." && $file != ".."){
                     $currentModified = filectime($this->dir.$file);
                     $this->file_names[] = $file;
                     $this->file_dates[] = $currentModified;
@@ -189,6 +275,63 @@ class Images {
             $this->error = true;
         }
     }
+
+    /**
+     * Retrieves list of content from specific directory and sorts it into chronological order
+     *
+     * @author Matthew Harrison-Jones <contact@matthojo.co.uk>
+     * @param string $getDir The directory to find content in
+     */
+    public function getGroupsContent($getDir){
+
+        if($handle = opendir($getDir)){
+            while(false !== ($file = readdir($handle))){
+                $ext = strtolower(strrchr($file, "."));
+                //echo $ext."<br>";
+
+                if(in_array($ext, $this->good_ext)){
+                    $currentModified = filectime($getDir.'/'.$file);
+                    $this->group_names[] = $file;
+                    $this->group_dates[] = $currentModified;
+                }
+
+            }
+            closedir($handle);
+            if(!empty($this->group_names)){
+                switch(SORT){
+                    case 'desc':
+                        arsort($this->group_dates);
+                        break;
+                    case 'asc':
+                        asort($this->group_dates);
+                        break;
+                    default:
+                        arsort($this->group_dates);
+                }
+
+                //Match file_names array to file_dates array
+                $this->group_names_Array = array_keys($this->group_dates);
+                foreach($this->group_names_Array as $idx => $name){
+                    $name = $this->group_names[$name];
+                }
+                $this->group_dates = array_merge($this->group_dates);
+
+            } else{
+                $this->display .= "<div class='note error'><h2>Directory does not contain any posts.</h2></div>";
+                $this->error = true;
+            }
+        }
+        else
+        {
+            $this->display .= "
+				<div class='note error'>
+				<h2>Directory does not exist!</h2>
+				<p>Please check your config file.</p>
+				</div>";
+            $this->error = true;
+        }
+    }
+
 
     /**
      * Takes a filename e.g "image.jpg" and returns the extention.
