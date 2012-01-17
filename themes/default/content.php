@@ -9,10 +9,7 @@
     <div id="rule"></div>
     <h1 class="title"><?php echo TITLE; ?></h1>
     <?php
-    require_once('classes/view/display.class.php');
-    $display = new Display();
-
-    $display->displayContent();
+    	display_content();
     ?>
 </div>
 <div id="my-modal" class="modal hide fade">

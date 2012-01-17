@@ -9,6 +9,7 @@
  * @license http://www.opensource.org/licenses/gpl-2.0.php
  */
 require_once('config.php');
+require_once('includes/functions.php');
 
 // Start initialising actual content
 
