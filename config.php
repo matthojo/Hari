@@ -40,6 +40,16 @@ define('TITLE', "My Timeline");
 define('AUTHOR', "CONTENT AUTHOR GOES HERE");
 
 /**
+ * DESCRIPTION
+ *
+ * The description of the content of the website
+ *
+ * @author Matthew Harrison-Jones <contact@matthojo.co.uk>
+ * @global string DESCRIPTION Sets the description of the website
+ */
+define('DESCRIPTION', "WEBSITE DEACRIPTION GOES HERE");
+
+/**
  * THEME
  *
  * The theme you wish your content will look like.
