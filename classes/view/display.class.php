@@ -14,32 +14,26 @@ require_once 'classes/model/images.class.php';
 class Display {
 
 	/**
-	 * $images
-	 * @var mixed $display Initializes the content variable
-	 */
-    public $images;
-
-	/**
-	 * $display
-	 * @var mixed $display Initializes the content variable
+	 * $theme
+	 * @var boolean $theme Boolean to see if theme is working
 	 */
     public $theme;
 
 	/**
-	 * $display
-	 * @var mixed $display Initializes the content variable
+	 * $PostTemplate
+	 * @var mixed $PostTemplate Sets the individual post template
 	 */
     public $PostTemplate;
 
 	/**
-	 * $display
-	 * @var mixed $display Initializes the content variable
+	 * $GroupTemplate
+	 * @var mixed $GroupTemplate Sets the group post template
 	 */
     public $GroupTemplate;
 	
 	/**
-	 * $display
-	 * @var mixed $display Initializes the content variable
+	 * $GroupPostTemplate
+	 * @var mixed $GroupPostTemplate Sets the individual group post template
 	 */
     public $GroupPostTemplate;
 
@@ -48,13 +42,6 @@ class Display {
      * @var mixed $display Initializes the content variable
      */
     public $display = "";
-
-
-    public function __contstruct(){
-
-        $images = new Images();
-
-    }
 
     /**
      * Takes current files in the chosen directory and turns them into an output
