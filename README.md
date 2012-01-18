@@ -33,6 +33,15 @@ An example can be found at [Hari's Timeline](http://hari.matthojo.co.uk/).
 ###Note
 Files are ordered by modification date so if you change a file once its in the timeline, it will appear at the top.
 
+## Themes
+Content in themes is done by shortcodes, the following list is what each one means.
+	[[content]] = The post content
+	[[slug]] = The slug (name of the file with underscores) e.g "This_is_a_post"
+	[[type]] = The type of post, be it a group / photo (not properly finished yet)
+	[[date]] = The date the post was added
+	[[caption]] = The title of the post (name of the file with underscores replaced with spaces) e.g "This is a post"
+	[[url]] = The Url of the website
+	
 ## License
 
 ### Actual Programme
