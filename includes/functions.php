@@ -12,7 +12,7 @@ require_once('classes/view/display.class.php');
 
 function display_content(){
     $display = new Display();
-    $display->displayContent();
+    echo $display->parseContent();
 }
 
 ?>

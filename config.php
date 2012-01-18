@@ -17,7 +17,7 @@
  * @author Matthew Harrison-Jones <contact@matthojo.co.uk>
  * @global boolean DEBUG Decides if debug options are enabled or not.
  */
-define('DEBUG', false);
+define('DEBUG', true);
 
 /**
  * TITLE
