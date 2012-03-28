@@ -21,7 +21,7 @@
     fjs.parentNode.insertBefore(js, fjs);
 }(document, 'script', 'facebook-jssdk'));</script>
 
-<script src="js/libs/jquery.lazyload.min.js" type="text/javascript"></script>
+<script src="<?php echo PLUGINDIR; ?>/lazyload/jquery.lazyload.min.js" type="text/javascript"></script>
 <script type="text/javascript" charset="utf-8">
     $(document).ready(function () {
         $("img.lazy").show().lazyload({
