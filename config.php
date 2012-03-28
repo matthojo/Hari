@@ -103,6 +103,14 @@ define('URL', $url);
 define('DIR', 'display/');
 
 /**
+ * PLUGINDIR
+ *
+ * @author Matthew Harrison-Jones <contact@matthojo.co.uk>
+ * @global string PLUGINDIR Difines the directory contiaining plugins
+ */
+define('PLUGINDIR', '../../plugins');
+
+/**
  * SORT
  * This should be ether 'desc' or 'asc', otherwise will default to 'desc'
  *
