@@ -172,6 +172,38 @@ class Display {
     	        <source src="'.$filename.'" />
     	      </video>';
                 break;
+            case 'video':
+                $video_url = file_get_contents($filename, true);
+                $type = $this->videoType($video_url);
+                switch($type){
+                    case "youtube":
+                        $video_url = $this->convertYoutube($video_url);
+                        if($video_url){
+                            $content = '
+                            <div class="video">
+                                <iframe id="player" type="text/html" width="500px" height="400px" src="'.$video_url.'" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>
+                            </div>
+                            ';
+                        }else{
+                            $content = "<div class='note error'><h2>Invalid Youtube video.</h2></div>";
+                        }
+                        break;
+                    case "vimeo":
+                        $video_url = $this->convertVimeo($video_url);
+                        if($video_url){
+                            $content = '
+                            <div class="video">
+                                <iframe src="'.$video_url.'" width="500px" height="400px" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>
+                            </div>
+                            ';
+                        }else{
+                            $content = "<div class='note error'><h2>Invalid Vimeo video.</h2></div>";
+                        }
+                        break;
+                    default:
+                        $content = "<div class='note error'><h2>Video type not supported.</h2></div>";
+                }
+                break;
             case 'txt':
                 $txt = file_get_contents($filename, true);
                 $html = $this->convertMarkdown($txt);
@@ -208,6 +240,101 @@ class Display {
      */
     public function get_file_extension($file_name){
         return substr(strrchr($file_name, '.'), 1);
+    }
+
+    /**
+     * Takes a url and decides if its Youtube or Vimeo.
+     *
+     * @author Matthew Harrison-Jones <contact@matthojo.co.uk>
+     * @url http://stackoverflow.com/questions/6618967/php-how-to-check-whether-the-url-is-youtubes-or-vimeos
+     * @param $url
+     * @return string
+     */
+    public function videoType($url) {
+        if (strpos($url, 'youtu') > 0) {
+            return 'youtube';
+        }elseif (strpos($url, 'vimeo') > 0) {
+            return 'vimeo';
+        } else {
+            return 'unknown';
+        }
+    }
+
+    /**
+     * Takes a Youtube URL and converts it into an embedable URL.
+     *
+     * @url https://gist.github.com/2217372
+     * @author      Corey Ballou http://coreyballou.com
+     * @copyright   (c) 2012 Skookum Digital Works http://skookum.com
+     * @param $link
+     * @return null|string
+     */
+    public function convertYoutube($link){
+        $videoIdRegex = NULL;
+        $video_str = NULL;
+        $video_id = NULL;
+
+        if (strpos($link, 'youtube.com') !== FALSE) {
+            // works on:
+            // http://www.youtube.com/embed/VIDEOID
+            // http://www.youtube.com/embed/VIDEOID?modestbranding=1&amp;rel=0
+            // http://www.youtube.com/v/VIDEO-ID?fs=1&amp;hl=en_US
+            $videoIdRegex = '/youtube.com\/(?:embed|v){1}\/([a-zA-Z0-9_]+)\??/i';
+        } else if (strpos($link, 'youtu.be') !== FALSE) {
+            // works on:
+            // http://youtu.be/daro6K6mym8
+            $videoIdRegex = '/youtu.be\/([a-zA-Z0-9_]+)\??/i';
+        }
+
+        if ($videoIdRegex !== NULL) {
+            if (preg_match($videoIdRegex, $link, $results)) {
+                $video_id = $results[1];
+                $video_str = 'http://www.youtube.com/embed/$2?fs=1&rel=0&enablejsapi=1';
+            }
+        }
+
+        $final_url = sprintf($video_str, $video_id);
+        if($final_url){
+            return $final_url;
+        }else{
+            //Fallback for default URL
+            $link = preg_replace('/.+(\?|&)v=([a-zA-Z0-9]+).*/', 'https://www.youtube.com/embed/$2?fs=1&rel=0&enablejsapi=1', $link);
+            return $link;
+        }
+    }
+
+    /**
+     * Takes a Vimeo URL and converts it into an embedable URL
+     *
+     * @url https://gist.github.com/2217372
+     * @author      Corey Ballou http://coreyballou.com
+     * @copyright   (c) 2012 Skookum Digital Works http://skookum.com
+     * @param $link
+     * @return null|string
+     */
+    public function convertVimeo($link){
+        $videoIdRegex = NULL;
+        $video_str = NULL;
+        $video_id = NULL;
+
+        if (strpos($link, 'player.vimeo.com') !== FALSE) {
+            // works on:
+            // http://player.vimeo.com/video/37985580?title=0&amp;byline=0&amp;portrait=0
+            $videoIdRegex = '/player.vimeo.com\/video\/([0-9]+)\??/i';
+        } else {
+            // works on:
+            // http://vimeo.com/37985580
+            $videoIdRegex = '/vimeo.com\/([0-9]+)\??/i';
+        }
+
+        if ($videoIdRegex !== NULL) {
+            if (preg_match($videoIdRegex, $link, $results)) {
+                $video_id = $results[1];
+                $video_str = 'http://player.vimeo.com/video/%s?byline=0&amp;portrait=0';
+            }
+        }
+
+        return sprintf($video_str, $video_id);
     }
 
     /**

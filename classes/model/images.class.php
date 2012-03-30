@@ -20,7 +20,7 @@ class Images {
      * $good_ext
      * @var array $good_ext An array of valid extentions
      */
-    public $good_ext = array(".jpg", ".jpeg", ".gif", ".png", ".txt");
+    public $good_ext = array(".jpg", ".jpeg", ".gif", ".png", ".txt", ".video");
 
     /**
      * $display

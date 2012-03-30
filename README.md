@@ -12,8 +12,11 @@
 	* Images
 	* Plain Text
 	* Markdown
-	* Video [Coming Soon]
+	* Youtube and Vimeo Videos
+	* Local Video [Coming Soon]
+* Groups
 * Themes
+* Plugins
 	
 
 ## Description
@@ -26,11 +29,24 @@ An example can be found at [Hari's Timeline](http://hari.matthojo.co.uk/).
 
 * Copy the programme to your websites directory.
 * Edit the config.php file so the author and other settings are correct to you.
-* Drag some images / .txt files into the 'display' folder or the folder you have set in the config.php folder.
+* Drag some images / .txt / .video (See below) files into the 'display' folder or the folder you have set in the config.php folder.
 * The post title is based on the filename, so, "this_is_an_image.jpg" turns into "This Is An Image".
 * Thats it.
 
-###Note
+### Adding Videos From Online Servies
+
+To add videos from online services place the video url in a file with the extension `.video`.
+
+Currently supports these video services;
+
+* Youtube
+* Vimeo
+
+### Groups
+Adding groups is simple. All you need to do is create a subfolder in the 'display' folder. The group will be titled what ever the subfolder is called.
+Adding supported files in the subfolder will add content to the group.
+
+### Note
 Files are ordered by modification date so if you change a file once its in the timeline, it will appear at the top.
 
 ## Themes
@@ -42,7 +58,15 @@ Content in themes is done by short codes, the following list is what each one me
 * The date the post was added = `[[date]]`
 * The title of the post (name of the file with underscores replaced with spaces) e.g "This is a post" = `[[caption]]`
 * The Url of the website = `[[url]]`
-	
+
+## Plugins
+Plugins are currently in a very basic form.
+To add a plugin, simply create a folder in the 'plugin' directory and link it to your theme via the following syntax.
+
+`<?php echo PLUGINDIR; ?>/FOLDER/FILENAME`
+
+As stated, this is currently in a very primitive form and it will be improved. At the moment it just stops duplicated files across themes.
+
 ## License
 
 ### Actual Programme
