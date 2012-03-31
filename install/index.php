@@ -131,7 +131,7 @@
         if(window.location.hash == ""){
             window.location = '#stage1';
         }else{
-            $(".breadcrumb li a").each(function (i) {
+            $(".breadcrumb li a").each(function () {
                 if ($(this).attr("href") == window.location.hash) {
                     $(".breadcrumb .active").removeClass("active");
                     $(this).parent().addClass("active");
@@ -147,7 +147,7 @@
         $(".next").on("click", function(){
                 var stage = $(this).attr("href");
 
-                $(".breadcrumb li a").each(function (i) {
+                $(".breadcrumb li a").each(function () {
                     if ($(this).attr("href") == stage) {
                         $(".breadcrumb .active").removeClass("active");
                         $(this).parent().addClass("active");
