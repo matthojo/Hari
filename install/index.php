@@ -62,7 +62,7 @@
                     </div>
                 </div>
                 <div class="control-group">
-                    <label class="control-label" for="input01">Website Description</label>
+                    <label class="control-label" for="input02">Website Description</label>
                     <div class="controls">
                         <input type="text" class="input-xlarge" id="input02">
                     </div>
@@ -81,7 +81,7 @@
         <div class="modal-body">
             <fieldset>
                 <div class="control-group">
-                    <label class="control-label" for="input01">Author Name</label>
+                    <label class="control-label" for="input03">Author Name</label>
                     <div class="controls">
                         <input type="text" class="input-xlarge" id="input03">
                     </div>
@@ -100,14 +100,14 @@
         <div class="modal-body">
             <fieldset>
                 <div class="control-group">
-                    <label class="control-label" for="input01">Facebook AppID</label>
+                    <label class="control-label" for="input04">Facebook AppID</label>
                     <div class="controls">
                         <input type="text" class="input-xlarge" id="input04">
                         <p class="help-block">Change to your Facebook app ID (<a href="https://developers.facebook.com/" title="Facebook Developers">https://developers.facebook.com/</a>)</p>
                     </div>
                 </div>
                 <div class="control-group">
-                    <label class="control-label" for="input01">Google Analytics Site ID</label>
+                    <label class="control-label" for="input05">Google Analytics Site ID</label>
                     <div class="controls">
                         <input type="text" class="input-xlarge" id="input05">
                         <p class="help-block">Do NOT include the beginning 'UA-'.</p>
@@ -146,7 +146,6 @@
 
         $(".next").on("click", function(){
                 var stage = $(this).attr("href");
-
                 $(".breadcrumb li a").each(function () {
                     if ($(this).attr("href") == stage) {
                         $(".breadcrumb .active").removeClass("active");
