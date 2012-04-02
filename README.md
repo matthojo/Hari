@@ -28,10 +28,18 @@ An example can be found at [Hari's Timeline](http://hari.matthojo.co.uk/).
 ## Installation
 
 * Copy the programme to your websites directory.
-* Edit the config.php file so the author and other settings are correct to you.
-* Drag some images / .txt / .video (See below) files into the 'display' folder or the folder you have set in the config.php folder.
+* Go to the URL of your website with /install e.g `examle.com/install/`
+* Use the installation file to set the right website settings.
+* Drag some images / .txt / .video (See below) files into the 'display' folder.
 * The post title is based on the filename, so, "this_is_an_image.jpg" turns into "This Is An Image".
 * Thats it.
+
+### NOTE
+For the install script to work the `config.php` must have have `777` chmod permissions set.
+
+### Advanced Settings
+To change more advanced settings, such as the folder that holds posts, edit the `config.php` file.
+
 
 ### Adding Videos From Online Servies
 
