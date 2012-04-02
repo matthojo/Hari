@@ -30,7 +30,7 @@ An example can be found at [Hari's Timeline](http://hari.matthojo.co.uk/).
 * Copy the programme to your websites directory.
 * Go to the URL of your website with /install e.g `examle.com/install/`
 * Use the installation file to set the right website settings.
-* Delete the 'intall' folder. Just for safety.
+* Delete the 'install' folder. Just for safety.
 * Drag some images / .txt / .video (See below) files into the 'display' folder.
 * The post title is based on the filename, so, "this_is_an_image.jpg" turns into "This Is An Image".
 * Thats it.
