@@ -7,6 +7,9 @@
  * @package Hari CMS
  * @license http://www.opensource.org/licenses/gpl-2.0.php
  */
+$installed = false;
+$error = false;
+$error_message = "";
 if(isset($_POST['setup'])){
     $website_name = $_POST['website_name'];
     $website_desc = $_POST['website_desc'];
@@ -35,8 +38,8 @@ if(isset($_POST['setup'])){
             if($google != "") $config_file = str_replace('XXXXX-X', $google, $config_file);
 
             file_put_contents($config, $config_file);
-
-            if(DEBUG){
+            $installed = true;
+            /*if(DEBUG){
                 echo $website_name."\n";
                 echo $website_desc."\n";
                 echo $author."\n";
@@ -44,12 +47,14 @@ if(isset($_POST['setup'])){
                 echo $FBID."\n";
                 echo $google."\n";
                 echo $config_file;
-            }
+            }*/
         }else{
-            echo "CONFIG FILE NOT WRITABLE";
+            $error = true;
+            $error_message = "CONFIG FILE NOT WRITABLE";
         }
     }else{
-        echo "NO CONFIG FILE";
+        $error = true;
+        $error_message = "NO CONFIG FILE";
     }
 
 }
@@ -81,6 +86,42 @@ if(isset($_POST['setup'])){
 <body>
 
 <div class="container">
+    <?php
+        if($installed){
+            echo '
+            <section class="modal" id="installed">
+        <div class="modal-header">
+            <h1>Website Installed Successfully</h1>
+        </div>
+        <div class="modal-body">
+            <p>Now all you need to do it:</p>
+            <ul>
+                <li> Delete the "install" folder. Just for safety.</li>
+                <li> Drag some images / .txt / .video (See below) files into the "display" folder.</li>
+                <li> The post title is based on the filename, so, "this_is_an_image.jpg" turns into "This Is An Image".</li>
+                <li> Thats it.</li>
+            </ul>
+        </div>
+            <div class="modal-footer">
+            </div>
+    </section>
+            ';
+        }elseif($error){
+            echo '
+            <section class="modal" id="installed">
+        <div class="modal-header">
+            <h1>There Was An Error During The Installation</h1>
+        </div>
+        <div class="modal-body">
+            <p>Error message: '.$error_message.'</p>
+        </div>
+            <div class="modal-footer">
+            </div>
+    </section>
+            ';
+        }
+    ?>
+    <?php if(!$error && !$installed): ?>
     <ul class="breadcrumb">
         <li class="active">
             <a href="#stage1">Website Details</a> <span class="divider">/</span>
@@ -179,6 +220,7 @@ if(isset($_POST['setup'])){
             </div>
     </section>
     </form>
+    <?php endif; ?>
 
 </div>
 <!-- JavaScript at the bottom for fast page loading -->
