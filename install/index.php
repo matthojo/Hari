@@ -7,8 +7,52 @@
  * @package Hari CMS
  * @license http://www.opensource.org/licenses/gpl-2.0.php
  */
+if(isset($_POST['setup'])){
+    $website_name = $_POST['website_name'];
+    $website_desc = $_POST['website_desc'];
+    $author = $_POST['author'];
+    $order = $_POST['order'];
+    $FBID = $_POST['facebook'];
+    $google = $_POST['google'];
 
+    $config = '../config.php';
 
+    if (file_exists($config)) {
+        if(is_writable($config)){
+            $config_file = file_get_contents($config);
+
+            // Replace Title
+            if($website_name != "") $config_file = str_replace('My Timeline', $website_name, $config_file);
+            // Replace Description
+            if($website_desc != "") $config_file = str_replace('WEBSITE DESCRIPTION GOES HERE', $website_desc, $config_file);
+            // Replace Author
+            if($author != "") $config_file = str_replace('WEBSITE AUTHOR GOES HERE', $author, $config_file);
+            // Replace Post Order
+            if($order != "") $config_file = str_replace("'desc'", "'".$order."'", $config_file);
+            // Replace Facebook App ID
+            if($FBID != "") $config_file = str_replace('XXXXXXXXXX', $FBID, $config_file);
+            // Replace Google Analytics ID
+            if($google != "") $config_file = str_replace('XXXXX-X', $google, $config_file);
+
+            file_put_contents($config, $config_file);
+
+            if(DEBUG){
+                echo $website_name."\n";
+                echo $website_desc."\n";
+                echo $author."\n";
+                echo $order."\n";
+                echo $FBID."\n";
+                echo $google."\n";
+                echo $config_file;
+            }
+        }else{
+            echo "CONFIG FILE NOT WRITABLE";
+        }
+    }else{
+        echo "NO CONFIG FILE";
+    }
+
+}
 
 ?>
 
@@ -48,7 +92,7 @@
             <a href="#stage3">Extras</a>
         </li>
     </ul>
-    <form class="setup-form form-horizontal">
+    <form class="setup-form form-horizontal" method="post" action="">
     <section class="modal stage" id="stage1">
         <div class="modal-header">
             <h1>Website Details</h1>
@@ -58,13 +102,13 @@
                 <div class="control-group">
                     <label class="control-label" for="input01">Website Title</label>
                     <div class="controls">
-                        <input type="text" class="input-xlarge" id="input01">
+                        <input type="text" class="input-xlarge" id="input01" name="website_name">
                     </div>
                 </div>
                 <div class="control-group">
                     <label class="control-label" for="input02">Website Description</label>
                     <div class="controls">
-                        <input type="text" class="input-xlarge" id="input02">
+                        <input type="text" class="input-xlarge" id="input02" name="website_desc">
                     </div>
                 </div>
             </fieldset>
@@ -83,7 +127,7 @@
                 <div class="control-group">
                     <label class="control-label" for="input03">Author Name</label>
                     <div class="controls">
-                        <input type="text" class="input-xlarge" id="input03">
+                        <input type="text" class="input-xlarge" id="input03" name="author">
                     </div>
                 </div>
                 <div class="control-group">
@@ -114,7 +158,7 @@
                 <div class="control-group">
                     <label class="control-label" for="input04">Facebook AppID</label>
                     <div class="controls">
-                        <input type="text" class="input-xlarge" id="input04">
+                        <input type="text" class="input-xlarge" id="input04" name="facebook">
                         <p class="help-block">View your Facebook app IDs at <a href="https://developers.facebook.com/" title="Facebook Developers">https://developers.facebook.com/</a>.</p>
                     </div>
                 </div>
@@ -122,7 +166,7 @@
                     <label class="control-label" for="input05">Google Analytics Site ID</label>
                     <div class="controls">
                         <div class="input-prepend">
-                            <span class="add-on">UA-</span><input class="input-large" id="input05" size="16" type="text">
+                            <span class="add-on">UA-</span><input class="input-large" id="input05" size="16" type="text" name="google">
                         </div>
                         <p class="help-block">Do NOT include the beginning 'UA-'.</p>
                     </div>
@@ -131,7 +175,7 @@
         </div>
             <div class="modal-footer">
                 <a href="#stage2" class="btn btn-primary btn-large next pull-left">Back</a>
-                <input type="submit" class="btn btn-success btn-large finish" data-loading-text="Setting up...." value="Setup"/>
+                <input type="submit" class="btn btn-success btn-large finish" data-loading-text="Setting up...." value="Setup" name="setup"/>
             </div>
     </section>
     </form>
