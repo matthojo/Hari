@@ -112,7 +112,7 @@ define('PLUGINDIR', '/plugins');
 
 /**
  * SORT
- * This should be ether 'desc' or 'asc', otherwise will default to 'desc'
+ * This should be ether "desc" or "asc", otherwise will default to 'desc'
  *
  * @author Matthew Harrison-Jones <contact@matthojo.co.uk>
  * @global string SORT Sets which way content is display in order of time
