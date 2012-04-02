@@ -29,7 +29,7 @@
         });
     });
 </script>
-<script src="js/libs/bootstrap-modal.js" type="text/javascript"></script>
+<script src="/js/libs/bootstrap-modal.js" type="text/javascript"></script>
 <script>
     $('#my-modal').modal({
         keyboard: true
