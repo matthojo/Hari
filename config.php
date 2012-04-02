@@ -37,7 +37,7 @@ define('TITLE', "My Timeline");
  * @author Matthew Harrison-Jones <contact@matthojo.co.uk>
  * @global string AUTHOR Sets the author of the website
  */
-define('AUTHOR', "CONTENT AUTHOR GOES HERE");
+define('AUTHOR', "WEBSITE AUTHOR GOES HERE");
 
 /**
  * DESCRIPTION
@@ -47,7 +47,7 @@ define('AUTHOR', "CONTENT AUTHOR GOES HERE");
  * @author Matthew Harrison-Jones <contact@matthojo.co.uk>
  * @global string DESCRIPTION Sets the description of the website
  */
-define('DESCRIPTION', "WEBSITE DEACRIPTION GOES HERE");
+define('DESCRIPTION', "WEBSITE DESCRIPTION GOES HERE");
 
 /**
  * THEME
@@ -108,7 +108,7 @@ define('DIR', 'display/');
  * @author Matthew Harrison-Jones <contact@matthojo.co.uk>
  * @global string PLUGINDIR Difines the directory contiaining plugins
  */
-define('PLUGINDIR', '../../plugins');
+define('PLUGINDIR', '/plugins');
 
 /**
  * SORT
