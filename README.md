@@ -41,6 +41,7 @@ For the install script to work the `config.php` must have have `777` chmod permi
 ### Advanced Settings
 To change more advanced settings, such as the folder that holds posts, edit the `config.php` file.
 
+## Content
 
 ### Adding Videos From Online Servies
 
