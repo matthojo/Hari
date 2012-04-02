@@ -42,7 +42,7 @@
             <a href="#stage1">Website Details</a> <span class="divider">/</span>
         </li>
         <li>
-            <a href="#stage2">Author Details</a> <span class="divider">/</span>
+            <a href="#stage2">Content Details</a> <span class="divider">/</span>
         </li>
         <li>
             <a href="#stage3">Extras</a>
@@ -76,7 +76,7 @@
 
     <section class="modal stage" id="stage2">
         <div class="modal-header">
-            <h1>Author Details</h1>
+            <h1>Content Details</h1>
         </div>
         <div class="modal-body">
             <fieldset>
@@ -86,9 +86,21 @@
                         <input type="text" class="input-xlarge" id="input03">
                     </div>
                 </div>
+                <div class="control-group">
+                    <p class="control-label">Post Order</p>
+                    <div class="controls">
+                        <label class="radio">
+                            <input type="radio" value="asc" name="order" /> Ascending (Oldest First / On top)
+                        </label>
+                        <label class="radio">
+                            <input type="radio" value="desc" name="order" checked="1"/> Descending (Newest First / On top)
+                        </label>
+                    </div>
+                </div>
             </fieldset>
         </div>
             <div class="modal-footer">
+                <a href="#stage1" class="btn btn-primary btn-large next pull-left">Back</a>
                 <a href="#stage3" class="btn btn-primary btn-large next">Next</a>
             </div>
     </section>
@@ -103,28 +115,32 @@
                     <label class="control-label" for="input04">Facebook AppID</label>
                     <div class="controls">
                         <input type="text" class="input-xlarge" id="input04">
-                        <p class="help-block">Change to your Facebook app ID (<a href="https://developers.facebook.com/" title="Facebook Developers">https://developers.facebook.com/</a>)</p>
+                        <p class="help-block">View your Facebook app IDs at <a href="https://developers.facebook.com/" title="Facebook Developers">https://developers.facebook.com/</a>.</p>
                     </div>
                 </div>
                 <div class="control-group">
                     <label class="control-label" for="input05">Google Analytics Site ID</label>
                     <div class="controls">
-                        <input type="text" class="input-xlarge" id="input05">
+                        <div class="input-prepend">
+                            <span class="add-on">UA-</span><input class="input-large" id="input05" size="16" type="text">
+                        </div>
                         <p class="help-block">Do NOT include the beginning 'UA-'.</p>
                     </div>
                 </div>
             </fieldset>
         </div>
             <div class="modal-footer">
-                <a href="#" class="btn btn-success btn-large finish">Setup</a>
+                <a href="#stage2" class="btn btn-primary btn-large next pull-left">Back</a>
+                <input type="submit" class="btn btn-success btn-large finish" data-loading-text="Setting up...." value="Setup"/>
             </div>
     </section>
     </form>
+
 </div>
-</body>
 <!-- JavaScript at the bottom for fast page loading -->
 
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.min.js"></script>
+<script src="js/bootstrap-button.js"></script>
 
 <script>
     $(function() {
@@ -153,6 +169,10 @@
                     }
                 });
 
+            }
+        );
+        $(".finish").on("click", function(){
+                $(this).button('loading');
             }
         );
     });
