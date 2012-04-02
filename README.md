@@ -58,6 +58,7 @@ Content in themes is done by short codes, the following list is what each one me
 * The date the post was added = `[[date]]`
 * The title of the post (name of the file with underscores replaced with spaces) e.g "This is a post" = `[[caption]]`
 * The Url of the website = `[[url]]`
+* The author of the website = `[[author]]`
 
 ## Plugins
 Plugins are currently in a very basic form.

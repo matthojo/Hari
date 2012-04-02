@@ -126,6 +126,7 @@ class Display {
                     $this->display = str_replace('[[type]]', "group", $this->display);
                     $this->display = str_replace('[[date]]', $date, $this->display);
                     $this->display = str_replace('[[caption]]', $caption, $this->display);
+                    $this->display = str_replace('[[author]]', AUTHOR, $this->display);
                     $this->display = str_replace('[[url]]', URL, $this->display);
                     
                     unset($images->group_dates, $images->group_names_Array, $images->group_names, $groupContent);
@@ -226,6 +227,7 @@ class Display {
         $postContent = str_replace('[[type]]', $ptype, $postContent);
         $postContent = str_replace('[[caption]]', $caption, $postContent);
         $postContent = str_replace('[[content]]', $content, $postContent);
+        $postContent = str_replace('[[author]]', AUTHOR, $postContent);
         $postContent = str_replace('[[url]]', URL, $postContent);
         
         return $postContent;
