@@ -23,12 +23,12 @@
 
 This is just a small CMS powered by a single folder. No database is required. 
 All you do is drag and drop images / text files into the directory you choose, and that's it. Text posts can include Markdown too.
-An example can be found at [Hari's Timeline](http://hari.matthojo.co.uk/).
+An example can be found at [Haris Timeline](http://hari.matthojo.co.uk/).
 
 ## Installation
 
 * Copy the programme to your websites directory.
-* Go to the URL of your website with /install e.g `examle.com/install/`
+* Go to the URL of your website with /install e.g `example.com/install/`
 * Use the installation file to set the right website settings.
 * Delete the 'install' folder. Just for safety.
 * Drag some images / .txt / .video (See below) files into the 'display' folder.
@@ -43,7 +43,7 @@ To change more advanced settings, such as the folder that holds posts, edit the 
 
 ## Content
 
-### Adding Videos From Online Servies
+### Adding Videos From Online Services
 
 To add videos from online services place the video url in a file with the extension `.video`.
 
@@ -70,7 +70,7 @@ Content in themes is done by short codes, the following list is what each one me
 * The Url of the website = `[[url]]`
 * The author of the website = `[[author]]`
 
-## Plugins
+## Plugins
 Plugins are currently in a very basic form.
 To add a plugin, simply create a folder in the 'plugin' directory and link it to your theme via the following syntax.
 
